@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 
 /*
-    hangman plan:
+    hangman :
     - random word generator/word bank √
     - user input √
     - check if the input(letter guessed) appears in the word √
@@ -25,8 +25,12 @@ import java.util.Scanner;
 
 
     todo:
-     store all the letters guessed in a new array,
-     if the letter they guessed is part of that array, tell them to use a unique letter (+1 to remaining guesses)
+     store all the letters guessed in a new array, √
+     if the letter they guessed is part of that array, tell them to use a unique letter (+1 to remaining guesses) √
+     add a points system -- the faster you guess the word, the more points you get. if you guess the word by typing it in instead of guessing letters, you get more points
+     12 points to start with, -2 every time you dont get the word during that try, + 1 every time you get a letter, +3 if you get the word, +3 if you guess the word and theres more than one letter left to guess (not including duplicate letters in the word)
+     add an option to play again, until the user types 'quit'
+
 
  */
 
@@ -231,9 +235,15 @@ public class Main {
                     }
 
                 } else {
-                    System.out.println("that's" +
-                            " the wrong word, guess again");
-                    guessesRemaining --;
+                    if (guessesRemaining != 0) {
+                        System.out.println("that's the wrong word, guess again");
+                        System.out.println("you have " + guessesRemaining + " left");
+                    }
+                    else {
+                        break;
+                    }
+
+
 
                 }
             }
